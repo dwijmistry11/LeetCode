@@ -1,16 +1,19 @@
 class Solution {
 public:
     bool isPalindrome(int x) {
-        long int a = x;
-        long int b = 0;
-        if(x<0){
-            a = (long int)x*(-1);
+        // special cases:
+        //as negative numbers are not palindrome (x<0)
+        //if last digit is 0
+        //if x != 0
+        if(x<0 || (x%10 == 0 && x!=0) ){
+            return false; 
         }
-        while(a){
-            b *=10;
-            b += (a%10);
-            a/=10;
+        int rNo = 0;
+        while(x > rNo){
+            rNo = (rNo*10) + (x%10);
+            x/=10;
         }
-        return (x==b);
+        //when length is an odd number, we can get rid of the middle digit; Since middle digit is doesn't matter in palindrome
+        return x == rNo || x == rNo/10;
     }
 };

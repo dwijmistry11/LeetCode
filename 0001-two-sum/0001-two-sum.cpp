@@ -2,6 +2,7 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
+        // This is a o(n^2) time complaxity solution.
         vector<int> ans;
         for (auto a = nums.begin(); a != nums.end(); ++a)
         {

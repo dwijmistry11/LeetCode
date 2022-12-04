@@ -2,6 +2,7 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
+        // simple method
         //time O(n^2)
         //space O(1)
         

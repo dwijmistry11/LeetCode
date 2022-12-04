@@ -2,23 +2,20 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
-        // This is a O(n^2) time complaxity solution.
-        vector<int> ans;
-        for (auto a = nums.begin(); a != nums.end(); ++a)
+        //time O(n^2)
+        //space O(1)
+        
+        int n = nums.size();
+        for(int i =0; i<n; i++)
         {
-            if(a != nums.end())
+            for(int j=i+1; j<n; j++)
             {
-                for(auto b = a+1; b != nums.end(); ++b )
+                if(nums[i]+nums[j] == target)
                 {
-                    if((*a + *b) == target)
-                    {
-                        ans.push_back(a-nums.begin());
-                        ans.push_back(b-nums.begin());
-                        break;
-                    }
+                    return {i,j};
                 }
             }
         }
-        return ans;
+        return {-1,-1};
     }
 };

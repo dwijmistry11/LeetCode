@@ -2,23 +2,29 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
-        // optimum method
-        //time O(n)
+        // two pointer approch
+        //time O(nlogn)
         //space O(n) -> because we are saving same array in a map
         
         int n = nums.size();
-        unordered_map<int,int> m;
+        vector<pair<int,int>> v;
         
-        for(int i =0; i<n; i++)
+        for(int i=0; i<n; i++)
         {
-            int x=nums[i];
-            int y=target-x;
-            if(m.find(y)!=m.end())
-            {
-                return {i,m[y]};
-            }
-            m[nums[i]]=i;
+            v.push_back({nums[i],i});
         }
-        return {-1,-1};//will never reach
+        sort(v.begin(),v.end());
+        
+        int s=0, e=n-1;
+        
+        while(s<e)
+        {
+            int sum = v[s].first + v[e].first;
+            
+            if(sum==target) return {v[s].second, v[e].second};
+            else if(sum>target) e--;
+            else s++;
+        }
+        return {-1,-1};
     }
 };

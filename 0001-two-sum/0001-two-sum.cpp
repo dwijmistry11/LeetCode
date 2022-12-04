@@ -2,20 +2,22 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) 
     {
-        // simple method
-        //time O(n^2)
-        //space O(1)
+        // optimum method
+        //time O(n)
+        //space O(n) -> because we are saving same array in a map
         
         int n = nums.size();
+        unordered_map<int,int> m;
+        
         for(int i =0; i<n; i++)
         {
-            for(int j=i+1; j<n; j++)
+            int x=nums[i];
+            int y=target-x;
+            if(m.find(y)!=m.end())
             {
-                if(nums[i]+nums[j] == target)
-                {
-                    return {i,j};
-                }
+                return {i,m[y]};
             }
+            m[nums[i]]=i;
         }
         return {-1,-1};//will never reach
     }

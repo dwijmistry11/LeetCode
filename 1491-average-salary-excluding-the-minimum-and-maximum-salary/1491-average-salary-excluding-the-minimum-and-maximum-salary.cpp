@@ -2,8 +2,8 @@ class Solution {
 public:
     double average(vector<int>& salary) {
         
-        double min = INT_MAX;
-        double max = INT_MIN; 
+        int min = INT_MAX;
+        int max = INT_MIN; 
         double sum = 0;
         int i;
         for(i= 0; i < salary.size();i++)
